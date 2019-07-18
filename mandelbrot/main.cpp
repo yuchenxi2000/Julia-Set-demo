@@ -48,6 +48,7 @@ int main(int args, const char* argv[])
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_COCOA_RETINA_FRAMEBUFFER, true);
     
     // Open a window and create its OpenGL context
     window = glfwCreateWindow( WINDOW_WIDTH, WINDOW_HEIGHT, "Mandelbrot", NULL, NULL);
