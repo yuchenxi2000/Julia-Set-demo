@@ -27,7 +27,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0439BA5222015C3F00873E1F /* fragment2.glsl */ = {isa = PBXFileReference; lastKnownFileType = text; path = fragment2.glsl; sourceTree = "<group>"; };
 		049A3F7421FEF44F005EA217 /* mandelbrot */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = mandelbrot; sourceTree = BUILT_PRODUCTS_DIR; };
 		049A3F7721FEF44F005EA217 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		049A3F7F21FEF479005EA217 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -78,7 +77,6 @@
 				049A3F7721FEF44F005EA217 /* main.cpp */,
 				049A3F8521FEF5FB005EA217 /* vertices.glsl */,
 				049A3F8621FEF60F005EA217 /* fragment.glsl */,
-				0439BA5222015C3F00873E1F /* fragment2.glsl */,
 				049A3F8721FEFB79005EA217 /* shader.cpp */,
 				049A3F8821FEFB79005EA217 /* shader.hpp */,
 			);

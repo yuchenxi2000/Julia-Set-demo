@@ -127,7 +127,6 @@ int main(int args, const char* argv[])
         currentTime = glfwGetTime();
         
         glClear(GL_COLOR_BUFFER_BIT);
-        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         
         // handle events. a better way is to register a callback function.
         if (glfwGetKey(window, GLFW_KEY_EQUAL ) == GLFW_PRESS) {
@@ -195,7 +194,6 @@ void WindowSizeCallback(GLFWwindow * window, int width, int height) {
     WINDOW_HEIGHT = height;
     
     glClear(GL_COLOR_BUFFER_BIT);
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
     
     glUniform2fv(scaleID, 1, scaleXY);
     
