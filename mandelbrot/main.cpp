@@ -119,7 +119,7 @@ int main(int args, const char* argv[])
     
     double lastCommit = 0.0, currentTime = 0.0;
     
-    while (glfwGetKey(window, GLFW_KEY_ESCAPE ) == GLFW_PRESS ||
+    while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&
            !glfwWindowShouldClose(window)) {
         glfwPollEvents();
         
