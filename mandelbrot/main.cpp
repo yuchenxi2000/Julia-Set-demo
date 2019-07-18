@@ -111,145 +111,71 @@ int main(int args, const char* argv[])
         scaleXY[1] = WINDOW_HEIGHT / WINDOW_WIDTH;
     }
     
-    
-    glClear(GL_COLOR_BUFFER_BIT);
-    
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-    
     glUseProgram(programID);
     
     glUniform2fv(scaleID, 1, scaleXY);
     glUniform2fv(centerID, 1, center);
     glUniform2fv(cID, 1, c);
-        
-    // Draw the square
-    glDrawArrays(GL_TRIANGLES, 0, vertices.size() );
-    
-    glfwSwapBuffers(window);
     
     double lastCommit = 0.0, currentTime = 0.0;
     
-    do{
+    while (glfwGetKey(window, GLFW_KEY_ESCAPE ) == GLFW_PRESS ||
+           !glfwWindowShouldClose(window)) {
         glfwPollEvents();
         
         lastCommit = currentTime;
         currentTime = glfwGetTime();
         
+        glClear(GL_COLOR_BUFFER_BIT);
+        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        
         // handle events. a better way is to register a callback function.
         if (glfwGetKey(window, GLFW_KEY_EQUAL ) == GLFW_PRESS) {
-            
-            glClear(GL_COLOR_BUFFER_BIT);
-            glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-            
             scaleXY[0] /= 1 + (currentTime - lastCommit) * scaleTransformSpeed;
             scaleXY[1] /= 1 + (currentTime - lastCommit) * scaleTransformSpeed;
             glUniform2fv(scaleID, 1, scaleXY);
-            
-            glDrawArrays(GL_TRIANGLES, 0, vertices.size() );
-            glfwSwapBuffers(window);
         }
-        else if (glfwGetKey(window, GLFW_KEY_MINUS ) == GLFW_PRESS) {
-            
-            glClear(GL_COLOR_BUFFER_BIT);
-            glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-            
+        if (glfwGetKey(window, GLFW_KEY_MINUS ) == GLFW_PRESS) {
             scaleXY[0] *= 1 + (currentTime - lastCommit) * scaleTransformSpeed;
             scaleXY[1] *= 1 + (currentTime - lastCommit) * scaleTransformSpeed;
             glUniform2fv(scaleID, 1, scaleXY);
-            
-            glDrawArrays(GL_TRIANGLES, 0, vertices.size() );
-            glfwSwapBuffers(window);
         }
-        else if (glfwGetKey(window, GLFW_KEY_W ) == GLFW_PRESS) {
-            
-            glClear(GL_COLOR_BUFFER_BIT);
-            glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-            
+        if (glfwGetKey(window, GLFW_KEY_W ) == GLFW_PRESS) {
             center[1] += (currentTime - lastCommit) * displacementSpeed * scaleXY[1];
             glUniform2fv(centerID, 1, center);
-            
-            glDrawArrays(GL_TRIANGLES, 0, vertices.size() );
-            glfwSwapBuffers(window);
         }
-        else if (glfwGetKey(window, GLFW_KEY_S ) == GLFW_PRESS) {
-            
-            glClear(GL_COLOR_BUFFER_BIT);
-            glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-            
+        if (glfwGetKey(window, GLFW_KEY_S ) == GLFW_PRESS) {
             center[1] -= (currentTime - lastCommit) * displacementSpeed * scaleXY[1];
             glUniform2fv(centerID, 1, center);
-            
-            glDrawArrays(GL_TRIANGLES, 0, vertices.size() );
-            glfwSwapBuffers(window);
         }
-        else if (glfwGetKey(window, GLFW_KEY_D ) == GLFW_PRESS) {
-            
-            glClear(GL_COLOR_BUFFER_BIT);
-            glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-            
+        if (glfwGetKey(window, GLFW_KEY_D ) == GLFW_PRESS) {
             center[0] += (currentTime - lastCommit) * displacementSpeed * scaleXY[0];
             glUniform2fv(centerID, 1, center);
-            
-            glDrawArrays(GL_TRIANGLES, 0, vertices.size() );
-            glfwSwapBuffers(window);
         }
-        else if (glfwGetKey(window, GLFW_KEY_A ) == GLFW_PRESS) {
-            
-            glClear(GL_COLOR_BUFFER_BIT);
-            glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-            
+        if (glfwGetKey(window, GLFW_KEY_A ) == GLFW_PRESS) {
             center[0] -= (currentTime - lastCommit) * displacementSpeed * scaleXY[0];
             glUniform2fv(centerID, 1, center);
-            
-            glDrawArrays(GL_TRIANGLES, 0, vertices.size() );
-            glfwSwapBuffers(window);
         }
-        else if (glfwGetKey(window, GLFW_KEY_J ) == GLFW_PRESS) {
-            
-            glClear(GL_COLOR_BUFFER_BIT);
-            glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-            
+        if (glfwGetKey(window, GLFW_KEY_J ) == GLFW_PRESS) {
             c[0] += (currentTime - lastCommit) * shapeTransformSpeed;
             glUniform2fv(cID, 1, c);
-            
-            glDrawArrays(GL_TRIANGLES, 0, vertices.size() );
-            glfwSwapBuffers(window);
         }
-        else if (glfwGetKey(window, GLFW_KEY_K ) == GLFW_PRESS) {
-            
-            glClear(GL_COLOR_BUFFER_BIT);
-            glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-            
+        if (glfwGetKey(window, GLFW_KEY_K ) == GLFW_PRESS) {
             c[0] -= (currentTime - lastCommit) * shapeTransformSpeed;
             glUniform2fv(cID, 1, c);
-            
-            glDrawArrays(GL_TRIANGLES, 0, vertices.size() );
-            glfwSwapBuffers(window);
         }
-        else if (glfwGetKey(window, GLFW_KEY_N ) == GLFW_PRESS) {
-            
-            glClear(GL_COLOR_BUFFER_BIT);
-            glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-            
+        if (glfwGetKey(window, GLFW_KEY_N ) == GLFW_PRESS) {
             c[1] += (currentTime - lastCommit) * shapeTransformSpeed;
             glUniform2fv(cID, 1, c);
-            
-            glDrawArrays(GL_TRIANGLES, 0, vertices.size() );
-            glfwSwapBuffers(window);
         }
-        else if (glfwGetKey(window, GLFW_KEY_M ) == GLFW_PRESS) {
-            
-            glClear(GL_COLOR_BUFFER_BIT);
-            glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-            
+        if (glfwGetKey(window, GLFW_KEY_M ) == GLFW_PRESS) {
             c[1] -= (currentTime - lastCommit) * shapeTransformSpeed;
             glUniform2fv(cID, 1, c);
-            
-            glDrawArrays(GL_TRIANGLES, 0, vertices.size() );
-            glfwSwapBuffers(window);
         }
-    } while( glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS &&
-            glfwWindowShouldClose(window) == 0 );
+        
+        glDrawArrays(GL_TRIANGLES, 0, vertices.size() );
+        glfwSwapBuffers(window);
+    }
     
     // Cleanup VBO and shader
     glDeleteBuffers(1, &vertexbuffer);
@@ -268,9 +194,10 @@ void WindowSizeCallback(GLFWwindow * window, int width, int height) {
     WINDOW_WIDTH = width;
     WINDOW_HEIGHT = height;
     
+    glClear(GL_COLOR_BUFFER_BIT);
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    
     glUniform2fv(scaleID, 1, scaleXY);
-    glUniform2fv(centerID, 1, center);
-    glUniform2fv(cID, 1, c);
     
     glDrawArrays(GL_TRIANGLES, 0, vertices.size() );
     glfwSwapBuffers(window);
