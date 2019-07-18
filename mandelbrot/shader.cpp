@@ -32,7 +32,7 @@ GLuint LoadShaders(const char * vertex_file_path,const char * fragment_file_path
             VertexShaderCode += "\n" + Line;
         VertexShaderStream.close();
     }else{
-        printf("Impossible to open %s. please use you own path in main.cpp: line 63\n", vertex_file_path);
+        printf("cannot open %s.\n", vertex_file_path);
         exit(EXIT_FAILURE);
     }
     
@@ -45,7 +45,7 @@ GLuint LoadShaders(const char * vertex_file_path,const char * fragment_file_path
             FragmentShaderCode += "\n" + Line;
         FragmentShaderStream.close();
     }else{
-        printf("Impossible to open %s. please use you own path in main.cpp: line 63\n", vertex_file_path);
+        printf("cannot open %s.\n", vertex_file_path);
         exit(EXIT_FAILURE);
     }
     

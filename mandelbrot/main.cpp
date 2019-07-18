@@ -44,17 +44,16 @@ int main(int args, const char* argv[])
     }
     
     glfwWindowHint(GLFW_SAMPLES, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    glfwWindowHint(GLFW_COCOA_RETINA_FRAMEBUFFER, true);
+    glfwWindowHint(GLFW_COCOA_RETINA_FRAMEBUFFER, GLFW_TRUE);
     
     // Open a window and create its OpenGL context
     window = glfwCreateWindow( WINDOW_WIDTH, WINDOW_HEIGHT, "Mandelbrot", NULL, NULL);
     if( window == NULL ){
         fprintf( stderr, "Failed to open GLFW window.\n" );
-        getchar();
         glfwTerminate();
         return -1;
     }
@@ -64,14 +63,11 @@ int main(int args, const char* argv[])
     glewExperimental = true;
     if (glewInit() != GLEW_OK) {
         fprintf(stderr, "Failed to initialize GLEW\n");
-        getchar();
         glfwTerminate();
         return -1;
     }
     
     glfwSetWindowSizeCallback(window, WindowSizeCallback);
-    
-    glfwPollEvents();
     
     // Dark blue background
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -118,7 +114,7 @@ int main(int args, const char* argv[])
     glUniform2fv(centerID, 1, center);
     glUniform2fv(cID, 1, c);
     
-    double lastCommit = 0.0, currentTime = 0.0;
+    double lastCommit = 0.0, currentTime = 0.0; // calculate delta time
     
     while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&
            !glfwWindowShouldClose(window)) {

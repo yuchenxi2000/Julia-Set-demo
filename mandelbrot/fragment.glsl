@@ -1,4 +1,4 @@
-#version 330 core
+#version 410 core
 const int MAX_ITER = 96; // adjustable constant
 
 in vec2 xy;
