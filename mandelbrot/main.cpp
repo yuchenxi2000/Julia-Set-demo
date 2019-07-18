@@ -31,7 +31,7 @@ std::vector<GLfloat> vertices = {
     -1.0f, -1.0f, 0.0f
 };
 
-void WindowSizeCallback(GLFWwindow * window, int width, int height);
+void frameSizeCallback(GLFWwindow * window, int width, int height);
 
 int main(int args, const char* argv[])
 {
@@ -66,8 +66,7 @@ int main(int args, const char* argv[])
         glfwTerminate();
         return -1;
     }
-    
-    glfwSetWindowSizeCallback(window, WindowSizeCallback);
+    glfwSetFramebufferSizeCallback(window, frameSizeCallback);
     
     // Dark blue background
     glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -184,7 +183,7 @@ int main(int args, const char* argv[])
     return 0;
 }
 
-void WindowSizeCallback(GLFWwindow * window, int width, int height) {
+void frameSizeCallback(GLFWwindow * window, int width, int height) {
     scaleXY[0] *= (GLfloat)width / (GLfloat)WINDOW_WIDTH;
     scaleXY[1] *= (GLfloat)height / (GLfloat)WINDOW_HEIGHT;
     WINDOW_WIDTH = width;
