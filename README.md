@@ -1,8 +1,8 @@
 # Julia Set demo
 
-a simple julia set demo written in c++(OpenGL)
+a simple julia set demo written in c++ (OpenGL)
 
-You can download Mac App from releases.
+You can download Mac App from releases. (v1.0.0)
 
 ## Library Used
 
@@ -10,10 +10,15 @@ You can download Mac App from releases.
 2. glfw
 3. glm
 
-## Can' t Open App?
+## Feature
 
-* Enable installation of all applications in preferences -> security
-* Open Julia Set/Contents/MacOS/julia in terminal `$ ./julia`
+This program uses shader program to calculate the image. Faster than calculate using CPU, but accuracy may be lower.
 
-* Compile by yourself...
+## How to Use
+
+* press W/A/S/D to move the image up/down/left/right
+* press +/- to zoom in/out
+* press J/K/N/M to move the point C in the complex plane (change the shape of julia set)
+
+> Point C : the parameter in formula z\_n = z\_(n-1) * z\_(n-1) + C
 
