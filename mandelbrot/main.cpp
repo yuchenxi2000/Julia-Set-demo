@@ -22,7 +22,7 @@ GLfloat scaleXY[2];
 
 GLuint cID, centerID, scaleID;
 
-std::vector<GLfloat> vertices = {
+GLfloat vertices[] = {
     -1.0f, -1.0f, 0.0f,
     -1.0f, 1.0f, 0.0f,
     1.0f, 1.0f, 0.0f,
@@ -51,7 +51,7 @@ int main(int args, const char* argv[])
     glfwWindowHint(GLFW_COCOA_RETINA_FRAMEBUFFER, GLFW_TRUE);
     
     // Open a window and create its OpenGL context
-    window = glfwCreateWindow( WINDOW_WIDTH, WINDOW_HEIGHT, "Mandelbrot", NULL, NULL);
+    window = glfwCreateWindow( WINDOW_WIDTH, WINDOW_HEIGHT, "Julia Set", NULL, NULL);
     if( window == NULL ){
         fprintf( stderr, "Failed to open GLFW window.\n" );
         glfwTerminate();
@@ -82,7 +82,7 @@ int main(int args, const char* argv[])
     GLuint vertexbuffer;
     glGenBuffers(1, &vertexbuffer);
     glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
-    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(glm::vec3), &vertices[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), &vertices[0], GL_STATIC_DRAW);
     
     glEnableVertexAttribArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
@@ -168,7 +168,7 @@ int main(int args, const char* argv[])
             glUniform2fv(cID, 1, c);
         }
         
-        glDrawArrays(GL_TRIANGLES, 0, vertices.size() );
+        glDrawArrays(GL_TRIANGLES, 0, 6);
         glfwSwapBuffers(window);
     }
     
@@ -193,6 +193,6 @@ void frameSizeCallback(GLFWwindow * window, int width, int height) {
     
     glUniform2fv(scaleID, 1, scaleXY);
     
-    glDrawArrays(GL_TRIANGLES, 0, vertices.size() );
+    glDrawArrays(GL_TRIANGLES, 0, 6);
     glfwSwapBuffers(window);
 }
